@@ -1,74 +1,107 @@
-
 <html>
-<head> 
+
+<head>
     <link rel="stylesheet" href="_css/style.css">
     <script src="_js/calc.js"></script>
-	
+
 
 </head>
+
 <body>
-<div>
-    <h3>MINHA PRIMEIRA CALCULADORA</h3>
-    <div> 
-        <form name="form"> 
-            <input class="textview" name="textview">
-        
-        
-        </form>
-        <table>
-            <td>
-                   <input class="button" type="button" value="C">
-                   <input class="button" type="button" value="<">
-                   <input class="button" type="button" value="/">
-                   <input class="button" type="button" value="*">
-            </td>
-        <tr>
-                <td> 
-                    <input class="button" type="button" value="7">
-                    <input class="button" type="button" value="8"> 
-                    <input class="button" type="button" value="9">
-                    <input class="button" type="button" value="+">
-
-                </td>
-
-            </tr> 
+    <div>
+        <h3>MINHA PRIMEIRA CALCULADORA</h3>
+        <div class='main'> 
+            <form name="form">
+                <input class="textview" name="textview">
 
 
-            <tr>
+            </form>
+            <table>
                 <td>
-                    <input class="button" type="button" value="4">
-                    <input class="button" type="button" value="5"> 
-                    <input class="button" type="button" value="6">
-                    <input class="button" type="button" value="-">
+                    <input class="button" type="button" value="C" onclick="c()">
+                    <input class="button" type="button" value="<" onclick="back()">
+                    <input class="button" type="button" value="/" onclick="insert('/')">
+                    <input class="button" type="button" value="*" onclick="insert('*')">
                 </td>
-            </tr>
-                    
-            <tr>
-                <td>
-                    <input class="button" type="button" value="1">
-                    <input class="button" type="button" value="2"> 
-                    <input class="button" type="button" value="3">
-                    <input class="button" type="button" value="=">
-                </td>
-            </tr>
-                   
-                    
-            </tr>
-        </table>
+                <tr>
+                    <td>
+                        <input class="button" type="button" value="7" onclick="insert(7)">
+                        <input class="button" type="button" value="8" onclick="insert(8)">
+                        <input class="button" type="button" value="9" onclick="insert(9)">
+                        <input class="button" type="button" value="+" onclick="insert('+')">
+
+                    </td>
+
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <input class="button" type="button" value="4" onclick="insert(4)">
+                        <input class="button" type="button" value="5" onclick="insert(5)">
+                        <input class="button" type="button" value="6" onclick="insert(6)">
+                        <input class="button" type="button" value="-" onclick="insert('-')">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input class="button" type="button" value="1" onclick="insert(1)">
+                        <input class="button" type="button" value="2" onclick="insert(2)">
+                        <input class="button" type="button" value="3" onclick="insert(3)">
+                        <input class="button" type="button" value="=" onclick="equal()">
+                    </td>
+                </tr>
+
+
+                </tr>
+            </table>
+        </div>
     </div>
-</div>
 
 
 
 </body>
 
 </html>
-<style> 
-.button{
-     width: 50px;
-    height: 50px;
-    font-size: 25px;
-    margin: 2;
+<script>
+    function insert(num) {
+        if (num != "") {
+            document.form.textview.value = document.form.textview.value + num;
 
-}
- </style>
+        }
+    }
+    function c() {
+
+        document.form.textview.value = "";
+
+
+    }
+    function back() {
+        var exp = document.form.textview.value;
+        document.form.textview.value = exp.substring(0, exp.length - 1);
+    }
+    function equal() {
+        exp = document.form.textview.value;
+        if (exp) {
+            document.form.textview.value = eval(exp);
+        }
+    }
+</script>
+
+<style>
+    .button {
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+        margin: 2;
+
+    }
+    .textview {
+        width: 211px;
+        height: 30px;
+    }
+    .main {
+        margin: 0 auto;
+    }
+</style>
